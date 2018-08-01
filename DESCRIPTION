@@ -1,0 +1,15 @@
+Package: vrwatch
+Title: Log R Package Usage for an R Session
+Version: 1.0.1
+Author: Mango Solutions <support@mango-solutions.com>
+Maintainer: Mango Solutions <support@mango-solutions.com>
+Description: This package writes an entry to a log file each
+    time a package is loaded or unloaded.
+Suggests: testthat (>= 2.0.0)
+License: file LICENSE
+URL: http://www.mango-solutions.com
+BugReports: mailto:support@mango-solutions.com
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Encoding: UTF-8

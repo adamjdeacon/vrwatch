@@ -1,0 +1,77 @@
+image: mangothecat/buildr:3.4.3
+variables:
+    PKG_PATH: "."
+    R_LIBS: "$CI_PROJECT_DIR/local_lib"
+    LC_ALL: C
+
+cache:
+    paths:
+        - local_lib/
+
+stages:
+    - deps
+    - build
+    - check
+    
+before_script:
+    - apt-get update
+    - apt-get -y install libpng-dev
+    - export MRAN="https://mran.microsoft.com/snapshot/2018-01-10"
+
+Install Dependencies:
+    stage: deps
+    script:
+      # Install package dependencies
+      - R -e "dir.create(\"local_lib\", recursive = TRUE, showWarnings = FALSE)"
+      - R -e "remotes::install_deps(\"$PKG_PATH\", dependencies = TRUE, threads = parallel::detectCores(), lib = \"$R_LIBS\", repos = \"$MRAN\")"
+    when: on_success
+    tags:
+      - docker
+
+Build R Package:
+    stage: build
+    script:
+      - R CMD build $CI_PROJECT_DIR/$PKG_PATH
+    artifacts:
+        paths:
+          - "*.tar.gz"
+        expire_in: 2 weeks
+    when: on_success
+    tags:
+      - docker
+
+Run CMD check:
+    stage: check
+    script:
+      # Run CMD check - make sure no other tar files top level
+      - tarfile=$(ls *.tar.gz)
+      - R CMD check $tarfile --no-manual
+      # Parse results
+      - checkdir=$(ls -d *.Rcheck)
+      - status=$(cat $checkdir/00check.log | grep "^Status")
+      - if grep -q "ERROR\|WARNING" <<< $status; then
+      -   echo $status 1>&2
+      -   echo "Check Failed" 1>&2
+      -   exit 1
+      - fi
+    when: on_success
+    tags:
+      - docker
+
+Run Validation check:
+    stage: check
+    script:
+      # Run validation test
+      # Install package dependencies
+      # Working, but not like it should! It should use the deps from the install_deps stage. It doesn't work like that:
+      # https://gitlab.com/gitlab-org/gitlab-runner/issues/336
+      - R -e "dir.create(\"local_lib\", recursive = TRUE, showWarnings = FALSE)"
+      - R -e "remotes::install_deps(\"$PKG_PATH\", dependencies = TRUE, threads = parallel::detectCores(), lib = \"$R_LIBS\", repos = \"$MRAN\")"
+      # Install package
+      - echo "RLIBS ${R_LIBS}"
+      - tarfile=$(ls *.tar.gz)
+      - R CMD INSTALL $tarfile
+    when: on_success
+    tags:
+        - docker 
+
