@@ -1,7 +1,7 @@
 Summary: Log R Package Usage for an R Session
 Name: vrwatch
 Version: 1.0.1
-Release: 1
+Release: 2
 License: Proprietary
 Group: Applications/Math
 SOURCE0 : %{name}_%{version}.tar.gz
@@ -108,5 +108,8 @@ service rsyslog restart
 service rsyslog restart
 
 %changelog
-* Thu 14 Jun 2018 Mango Solutions <support@mango-solutions.com> 1.0.1
-- First ValidR release
+* Thu Aug 02 2018 Adam Deacon <adeacon@mango-solutions.com> - 1.0.1-2
+- Added local-build script
+
+* Thu Jun 14 2018 Mango Solutions <support@mango-solutions.com> 1.0.1-1
+- Repackaged

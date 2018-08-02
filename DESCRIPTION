@@ -8,8 +8,8 @@ Description: This package writes an entry to a log file each
 Suggests: testthat (>= 2.0.0)
 License: file LICENSE
 URL: http://www.mango-solutions.com
-BugReports: mailto:support@mango-solutions.com
+BugReports: https://github.com/MangoTheCat/vrwatch/issues
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Encoding: UTF-8

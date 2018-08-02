@@ -3,3 +3,8 @@
 .RData
 *.Rproj
 docker-compose.yml
+tools/rpmbuild/BUILD
+tools/rpmbuild/BUILDROOT
+tools/rpmbuild/RPMS 
+tools/rpmbuild/SOURCES
+tools/rpmbuild/SRPMS

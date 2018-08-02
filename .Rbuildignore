@@ -4,6 +4,5 @@
 ^README.Rmd$
 ^.travis.yml$
 ^appveyor.yml$
-^rpmbuild$
+^tools/rpmbuild/*$
 ^.gitlab-ci\.yml$
-^vrwatch\.spec$
