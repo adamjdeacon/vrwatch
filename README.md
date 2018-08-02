@@ -1,17 +1,15 @@
 
 # vrwatch
 
-> Log the loading and unloading of R packages
+[![Build Status](https://travis-ci.org/MangoTheCat/vrwatch.svg?branch=master)](https://travis-ci.org/MangoTheCat/vrwatch)
 
-
+Log the loading and unloading of R packages
 
 ## Introduction
 
 **vrwatch** is a tool that logs the loadings and unloadings of R packages
 on a system. Its goal is to measure which packages are used, and how
 often.
-
-
 
 ## Requirements
 
