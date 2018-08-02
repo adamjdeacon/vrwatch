@@ -10,8 +10,6 @@ Log the loading and unloading of R packages
 on a system. Its goal is to measure which packages are used, and how
 often.
 
-
-
 ## Requirements
 
 * A version of R. Any version later than or equal to 3.0.0 is sufficient.
