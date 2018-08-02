@@ -4,5 +4,5 @@
 ^README.Rmd$
 ^.travis.yml$
 ^appveyor.yml$
-^rpmbuild$
-^.gitlab-ci.yml$
+^tools/rpmbuild/*$
+^.gitlab-ci\.yml$
