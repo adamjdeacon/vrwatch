@@ -1,4 +1,3 @@
-
 # vrwatch
 
 [![Build Status](https://travis-ci.org/MangoTheCat/vrwatch.svg?branch=master)](https://travis-ci.org/MangoTheCat/vrwatch)
@@ -40,6 +39,17 @@ often.
 We suggest to install it via the supplied RPM package, whenever
 possible; to set up the `rsyslog` system logger, and the automatic
 loading of **vrwatch** into every R session via a system-wide R profile.
+
+To build the RPM, run the following comamnds:
+
+```
+cd tools/rpmbuild
+./local-build.sh
+```
+
+You can then install the RPM using the following command:
+
+`yum install RPMS/x86_64/vrwatch-1.0.1-2.x86_64.rpm`
 
 For platforms unsupported by the supplied RPM package,
 **vrwatch** can be installed as a regular R package. The filtering of
